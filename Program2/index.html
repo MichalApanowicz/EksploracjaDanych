@@ -53,14 +53,16 @@
 			<tbody>
 			<tr>
 				<th/>
-				<th class="text-center">Trafność</th>
-				<th class="text-center">Całkowity współczynnik błędu</th>
-				<th class="text-center">Wskaźnik TN</th>
-				<th class="text-center">Wskaźnik TP</th>
-				<th class="text-center">Wskaźnik FN</th>
-				<th class="text-center">Wskaźnik FP</th>
-				<th class="text-center">Czułość</th>
-				<th class="text-center">Swoistość</th>
+				<th id="acc" class="text-center tooltip">Trafność<span class="tooltiptext">Odsetek poprawnych klasyfikacji</span></th>
+				<th id="oer" class="text-center tooltip">Całkowity współczynnik błędu<span class="tooltiptext">Odsetek błędnych klasyfikacji</span></th>
+				<th id="tpr" class="text-center tooltip">Czułość (TPR)<span class="tooltiptext">Odsetek poprawnie sklasyfikowanych przypadków pozytywnych</span></th>
+				<th id="tnr" class="text-center tooltip">Swoistość (TNR)<span class="tooltiptext">Odsetek poprawnie sklasyfikowanych przypadków negatywnych</span></th>
+				<th id="fnr" class="text-center tooltip">FNR<span class="tooltiptext">Odsetek fałszywych klasyfikacji wśród klasyfikacji negatywnych</span></th>
+				<th id="fpr" class="text-center tooltip">FPR<span class="tooltiptext">Odsetek fałszywych klasyfikacji wśród klasyfikacji pozytywnych</span></th>
+				<th id="ppv" class="text-center tooltip">PPV<span class="tooltiptext">Precyzja - dodatnia wartość predykcyjna</span></th>
+				<th id="npv" class="text-center tooltip">NPV<span class="tooltiptext">Ujemna wartość predykcyjna</span></th>
+				<th id="fdr" class="text-center tooltip">FDR<span class="tooltiptext">Współczynnik fałszywych odkryć</span></th>
+				<th id="for" class="text-center tooltip">FOR<span class="tooltiptext">Fałszywy wskaźnik pominięcia</span></th>
 			</tr>
 			
 			<tr ng-repeat="row in matrix track by $index">
@@ -74,10 +76,10 @@
 					{{calkowityWspolczynnikBleduKlasy($index)}}
 				</td>
 				<td class="text-center">
-					{{wskaznikTN($index)}}
+					{{czulosc($index)}}
 				</td>
 				<td class="text-center">
-					{{wskaznikTP($index)}}
+					{{swoistosc($index)}}
 				</td>
 				<td class="text-center">
 					{{wskaznikFN($index)}}
@@ -86,10 +88,16 @@
 					{{wskaznikFP($index)}}
 				</td>
 				<td class="text-center">
-					{{czulosc($index)}}
+					{{PPV($index)}}
 				</td>
 				<td class="text-center">
-					{{swoistosc($index)}}
+					{{NPV($index)}}
+				</td>
+				<td class="text-center">
+					{{FDR($index)}}
+				</td>
+				<td class="text-center">
+					{{FOR($index)}}
 				</td>
 			</tr>
 			</tbody>
