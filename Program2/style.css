@@ -1,0 +1,23 @@
+.text-center {
+	text-align: center;
+}
+
+.text-direction{
+	transform: rotate(-90deg);	
+}
+.input-value {
+	width:60px;
+}
+
+table#wyniki tr:nth-child(even) {
+    background-color: #eee;
+}
+
+table#wyniki tr:nth-child(odd) {
+    background-color: #fff;
+	
+}
+
+.table-cell {
+    border: 1px solid black;
+}

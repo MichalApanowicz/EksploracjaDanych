@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<script src="./angular.min.js"></script>
+<script src="./main.js"></script>
+<link rel="stylesheet" type="text/css" href="./style.css">
+
+	<body ng-app="program2"  ng-controller="ctrl">
+
+		<p>Liczba klas: <input class="input-value" type="number" ng-model="k" ng-change="classCountChange(k)" min="0"></p>
+
+		<!-- <p ng-bind="matrix"></p> -->
+
+		<table ng-hide="k<1">
+			<tbody>
+			<tr>
+				<td/>
+				<th colspan="{{k+1}}" class="text-center">Przewidywana</th>
+			</tr>
+			<tr>
+				<th rowspan="{{k+1}}" class="text-direction">Rzeczywista</th>
+				<td/>
+				<th ng-repeat="row in matrix track by $index">
+					<div class="text-center">{{$index}}</div>
+				</th>
+			</tr>
+			<tr ng-repeat="row in matrix track by $index">
+				<th>
+					<div class="text-center">{{$index}}</div>
+				</th>
+				<td ng-repeat="item in row track by $index">
+					<input type="number" ng-model="item.value" min="0" class="table-cell input-value">
+				</td>
+				<td>
+				<div class="text-center">{{sumColumn($index)}}</div>
+				</td>
+			</tr>
+			<tr>
+				<td/>
+				<td/>
+				<td ng-repeat="row in matrix track by $index">
+					<div class="text-center">{{sumRow($index)}}</div>
+				</td>
+				<td>
+					<div class="text-center">{{obliczWspolczynniki().N}}</div>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+
+		<p ng-show="trafnoscOgolna()>-1">Trafność ogólna: <b>{{trafnoscOgolna()}}</b></p>
+		
+		<table ng-hide="k<1" border="1">
+			<tbody>
+			<tr>
+				<th/>
+				<th class="text-center">Trafność</th>
+				<th class="text-center">Całkowity współczynnik błędu</th>
+				<th class="text-center">Wskaźnik TN</th>
+				<th class="text-center">Wskaźnik TP</th>
+				<th class="text-center">Wskaźnik FN</th>
+				<th class="text-center">Wskaźnik FP</th>
+				<th class="text-center">Czułość</th>
+				<th class="text-center">Swoistość</th>
+			</tr>
+			
+			<tr ng-repeat="row in matrix track by $index">
+				<th>
+					<div class="text-center">{{$index}}</div>
+				</th>
+				<td class="text-center">
+					{{trafnoscKlasy($index)}}
+				</td>
+				<td class="text-center">
+					{{calkowityWspolczynnikBleduKlasy($index)}}
+				</td>
+				<td class="text-center">
+					{{wskaznikTN($index)}}
+				</td>
+				<td class="text-center">
+					{{wskaznikTP($index)}}
+				</td>
+				<td class="text-center">
+					{{wskaznikFN($index)}}
+				</td>
+				<td class="text-center">
+					{{wskaznikFP($index)}}
+				</td>
+				<td class="text-center">
+					{{czulosc($index)}}
+				</td>
+				<td class="text-center">
+					{{swoistosc($index)}}
+				</td>
+			</tr>
+			</tbody>
+		</table>
+	</body>
+</html>
