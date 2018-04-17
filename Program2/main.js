@@ -9,7 +9,7 @@ app.controller("ctrl", function($scope) {
 		var row = [];
 		for(var i=0; i<n; i++){
 			for(var j=0; j<n; j++){
-				row.push({key: {x: i, y: j}, value: 0})
+				row.push({key: {x: j, y: i}, value: 0})
 			}	
 			$scope.matrix.push(row);
 			row = [];
@@ -20,7 +20,6 @@ app.controller("ctrl", function($scope) {
 		var factor = Math.pow(10, k);
 		return Math.round(n*factor)/factor;
 	}
-	
 	
 	$scope.sumColumn = function(i) {
 		var m = $scope.matrix;
@@ -44,15 +43,27 @@ app.controller("ctrl", function($scope) {
 		return sum;
 	}
 	
+	$scope.sumRowsAndColumns = function() {
+		var m = $scope.matrix;
+		let sum = 0;		
+		m.forEach(function(row){
+			row.forEach(function(item){
+				sum+=item.value;
+			})
+		});
+		return sum;
+	}
+	
 	$scope.obliczWspolczynniki = function(i) {
+		let index = i;
 		var result = {TP:0, TN:0, FP:0, FN:0, N:0};
 		var m = $scope.matrix;
 		m.forEach(function(row){
 			row.forEach(function(item){
-				if(i == item.key.y || i == item.key.x) {
-					if(i == item.key.y && i == item.key.x) result.TP += item.value;
-					else if(item.key.y == i) result.FN += item.value;
-					else if(item.key.x == i) result.FP += item.value;
+				if(index == item.key.y || index == item.key.x) {
+					if(index == item.key.y && index == item.key.x) result.TP += item.value;
+					else if(item.key.y == index) result.FN += item.value;
+					else if(item.key.x == index) result.FP += item.value;
 				}
 				else result.TN += item.value;
 				result.N += item.value;
@@ -71,7 +82,8 @@ app.controller("ctrl", function($scope) {
 				N+=item.value;
 			})
 		});
-		return TP/N;
+		var result = TP/N;
+		return result > -1 ? $scope.round(result, 4) : "-";
 	}
 	
 	$scope.trafnoscKlasy = function(i) {

@@ -44,7 +44,7 @@
 					<div class="text-center">{{sumRow($index)}}</div>
 				</td>
 				<td>
-					<div class="text-center">{{obliczWspolczynniki().N}}</div>
+					<div class="text-center">{{sumRowsAndColumns($index)}}</div>
 				</td>
 			</tr>
 			</tbody>
@@ -55,11 +55,11 @@
 		<table ng-hide="k<1" border="1">
 			<tbody>
 			<tr>
-				<th/>
+				<th>Klasa</th>
 				<th id="acc" class="text-center tooltip">Trafność<span class="tooltiptext">Odsetek poprawnych klasyfikacji</span></th>
 				<th id="oer" class="text-center tooltip">Całkowity współczynnik błędu<span class="tooltiptext">Odsetek błędnych klasyfikacji</span></th>
-				<th id="tpr" class="text-center tooltip">Czułość (TPR)<span class="tooltiptext">Odsetek poprawnie sklasyfikowanych przypadków pozytywnych</span></th>
-				<th id="tnr" class="text-center tooltip">Swoistość (TNR)<span class="tooltiptext">Odsetek poprawnie sklasyfikowanych przypadków negatywnych</span></th>
+				<th id="tpr" class="text-center tooltip">Czułość<span class="tooltiptext">Odsetek poprawnie sklasyfikowanych przypadków pozytywnych</span></th>
+				<th id="tnr" class="text-center tooltip">Swoistość<span class="tooltiptext">Odsetek poprawnie sklasyfikowanych przypadków negatywnych</span></th>
 				<th id="fnr" class="text-center tooltip">FNR<span class="tooltiptext">Odsetek fałszywych klasyfikacji wśród klasyfikacji negatywnych</span></th>
 				<th id="fpr" class="text-center tooltip">FPR<span class="tooltiptext">Odsetek fałszywych klasyfikacji wśród klasyfikacji pozytywnych</span></th>
 			</tr>
