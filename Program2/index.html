@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="pl-PL">
+<html>
 <head>
-   <meta charset="UTF-8">
+  <meta charset="UTF-8">
 </head>
 <script src="./angular.min.js"></script>
 <script src="./main.js"></script>
@@ -62,10 +62,6 @@
 				<th id="tnr" class="text-center tooltip">Swoistość (TNR)<span class="tooltiptext">Odsetek poprawnie sklasyfikowanych przypadków negatywnych</span></th>
 				<th id="fnr" class="text-center tooltip">FNR<span class="tooltiptext">Odsetek fałszywych klasyfikacji wśród klasyfikacji negatywnych</span></th>
 				<th id="fpr" class="text-center tooltip">FPR<span class="tooltiptext">Odsetek fałszywych klasyfikacji wśród klasyfikacji pozytywnych</span></th>
-				<th id="ppv" class="text-center tooltip">PPV<span class="tooltiptext">Precyzja - dodatnia wartość predykcyjna</span></th>
-				<th id="npv" class="text-center tooltip">NPV<span class="tooltiptext">Ujemna wartość predykcyjna</span></th>
-				<th id="fdr" class="text-center tooltip">FDR<span class="tooltiptext">Współczynnik fałszywych odkryć</span></th>
-				<th id="for" class="text-center tooltip">FOR<span class="tooltiptext">Fałszywy wskaźnik pominięcia</span></th>
 			</tr>
 			
 			<tr ng-repeat="row in matrix track by $index">
@@ -89,18 +85,6 @@
 				</td>
 				<td class="text-center">
 					{{wskaznikFP($index)}}
-				</td>
-				<td class="text-center">
-					{{PPV($index)}}
-				</td>
-				<td class="text-center">
-					{{NPV($index)}}
-				</td>
-				<td class="text-center">
-					{{FDR($index)}}
-				</td>
-				<td class="text-center">
-					{{FOR($index)}}
 				</td>
 			</tr>
 			</tbody>

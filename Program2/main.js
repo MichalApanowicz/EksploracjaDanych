@@ -116,32 +116,4 @@ app.controller("ctrl", function($scope) {
 		var result = r.TN/(r.TN+r.FP);
 		return result > -1 ? $scope.round(result, 4) : "-";
 	}
-	
-	$scope.PPV = function(i) {
-		var r = $scope.obliczWspolczynniki(i);
-
-		var result = r.TP/(r.TP+r.FP);
-		return result > -1 ? $scope.round(result, 4) : "-";
-	}
-	
-	$scope.NPV = function(i) {
-		var r = $scope.obliczWspolczynniki(i);
-
-		var result = r.TN/(r.TN+r.FN);
-		return result > -1 ? $scope.round(result, 4) : "-";
-	}
-	
-	$scope.FDR = function(i) {
-		var r = $scope.obliczWspolczynniki(i);
-
-		var result = r.FP/(r.FP+r.TP);
-		return result > -1 ? $scope.round(result, 4) : "-";
-	}
-	
-	$scope.FOR = function(i) {
-		var r = $scope.obliczWspolczynniki(i);
-
-		var result = r.FN/(r.FN+r.TN);
-		return result > -1 ? $scope.round(result, 4) : "-";
-	}
 });
